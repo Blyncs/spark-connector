@@ -27,15 +27,13 @@ trait Connector[T] extends Serializable {
   @transient lazy val connection: T = Connector.getConnection(this)
 
   protected def connect: T
-
-  private[connector] def getConnection: T = connect
 }
 
 object Connector {
   private val cachedConnectors = new ConcurrentHashMap[Connector[_], Any]
   private val connectionCreator = new function.Function[Connector[_], Any] {
     override def apply(t: Connector[_]): Any = {
-      t.getConnection
+      t.connect
     }
   }
 

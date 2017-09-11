@@ -6,9 +6,9 @@ Introduction
     our real time system uses spark
 Overview of the structure of spark
   composed of master and workers
-  explain how rdds build up and store functions
 explain what an RDD is and how it is distributed within spark
   it is serialized and sent to workers along with partition information
   the workers then call compute with the provided partition for the given task
   tasks operate on these partitions and rdds
+  explain how rdds build up and store functions
 
